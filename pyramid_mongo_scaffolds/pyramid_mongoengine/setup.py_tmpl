@@ -33,7 +33,9 @@ setup(name='{{project}}',
       tests_require=requires,
       test_suite="{{package}}",
       entry_points="""\
-      [paste.app_factory]
-      main = {{package}}:main
+      [paste.app_factory]	
+      main = {{package}}:main	
+      [console_scripts]
+      initialize_{{project}}_db = {{package}}.scripts.initializedb:main
       """,
       )

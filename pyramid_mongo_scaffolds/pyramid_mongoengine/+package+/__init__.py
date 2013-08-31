@@ -1,5 +1,5 @@
 from pyramid.config import Configurator
-
+from mongoengine import connect
 
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
