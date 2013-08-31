@@ -1,6 +1,9 @@
 from pyramid.view import view_config
 
+from .models import MyModel
+
 
 @view_config(route_name='home', renderer='templates/mytemplate.pt')
 def my_view(request):
+    one = MyModel.objects.get(name='one')
     return {'project': '{{project}}'}
