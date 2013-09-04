@@ -12,6 +12,7 @@ requires = [
 scaffolds = """
 [pyramid.scaffold]
 mongoengine = pyramid_mongo_scaffolds:PyramidMongoengineTemplate
+mongokit = pyramid_mongo_scaffolds:PyramidMongokitTemplate
 """
 
 classifiers = [

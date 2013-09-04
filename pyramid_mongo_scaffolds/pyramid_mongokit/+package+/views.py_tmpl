@@ -1,0 +1,25 @@
+from pyramid.view import view_config
+from pyramid.response import Response
+
+from {{package}}.lib import mongodb
+
+
+@view_config(route_name='home', renderer='templates/mytemplate.pt')
+def my_view(request):
+    one = mongodb.db.MyModel.find_one({'name': 'one'})
+    if one:
+        return {'one': one, 'project': '{{project}}'}
+    else:
+        return Response(mongo_conn_error, content_type="text/plain",
+                        status_int=500)
+
+
+mongo_conn_error = """\
+Pyramid is having a problem using your Mongo database. 
+You must need to run the "initialize_{{project}}_db" script
+to initialize your database tables. Check your virtual
+environment's "bin" directory for this script and try to run it.
+
+After you fix the problem, please restart the Pyramid application to
+try it again.
+"""

@@ -1,0 +1,31 @@
+import os
+import sys
+
+from pyramid.paster import (
+    get_appsettings,
+    setup_logging,
+    )
+from pyramid.scripts.common import parse_vars
+
+from {{package}}.lib import mongodb
+
+
+def usage(argv):
+    cmd = os.path.basename(argv[0])
+    print('usage: %s <config_uri> [var=value]\n'
+          '(example: "%s development.ini")' % (cmd, cmd))
+    sys.exit(1)
+
+def main(args=sys.argv):
+    if len(args) < 2:
+        usage(args)
+    config_uri = args[1]
+    setup_logging(config_uri)
+    settings = get_appsettings(config_uri)
+    url_str = settings.get('mongo_uri', 'mongodb://localhost:27017/default')
+    mongodb.initialize_db(url_str)
+
+    from {{package}}.models import MyModel
+
+    model = mongodb.db.MyModel({'name': 'one', 'value': 1})
+    model.save()

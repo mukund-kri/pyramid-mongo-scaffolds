@@ -1,0 +1,26 @@
+from mongokit import Document
+
+from {{package}}.lib import mongodb
+
+
+class MyModel(Document):
+    
+    __collection__ = "my_model"     # specifiying the collection name is must
+    use_dot_notation = True
+
+    structure = {
+        'name': str,
+        'value': int,
+        }
+
+    required_fields = ['name', 'value']
+
+    def __str__(self):
+        return "<MyModel name: %s, value: %d>" % (self.name, self.value)
+
+    @staticmethod
+    def get_by_name(name):
+        return mongodb.db.MyModel.find_one({'name': name})
+
+
+mongodb.connection.register(MyModel)
