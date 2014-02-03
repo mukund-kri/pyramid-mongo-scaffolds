@@ -1,6 +1,6 @@
 from mongokit import Document
 
-from {{package}}.lib import mongodb
+from {{package}}.lib import mongo
 
 
 class MyModel(Document):
@@ -20,7 +20,7 @@ class MyModel(Document):
 
     @staticmethod
     def get_by_name(name):
-        return mongodb.db.MyModel.find_one({'name': name})
+        return mongo.MyModel.find_one({'name': name})
 
 
-mongodb.connection.register(MyModel)
+mongo.register(MyModel)

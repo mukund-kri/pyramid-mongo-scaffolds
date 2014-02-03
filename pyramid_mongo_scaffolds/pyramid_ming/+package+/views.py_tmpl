@@ -1,12 +1,12 @@
 from pyramid.view import view_config
 from pyramid.response import Response
 
-from {{package}}.lib import mongo
+from {{package}}.models import MyModel
 
 
 @view_config(route_name='home', renderer='templates/mytemplate.pt')
 def my_view(request):
-    one = mongo.db.MyModel.find_one({'name': 'one'})
+    one = MyModel.objects(name='one').first()
     if one:
         return {'one': one, 'project': '{{project}}'}
     else:
@@ -23,3 +23,4 @@ environment's "bin" directory for this script and try to run it.
 After you fix the problem, please restart the Pyramid application to
 try it again.
 """
+

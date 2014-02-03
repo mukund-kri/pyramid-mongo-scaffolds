@@ -5,14 +5,14 @@ Setup script for pyramid_mongo_scaffolds.
 from setuptools import setup, find_packages
 
 requires = [
-    # 'pyramid',
-    #'mongoengine',
+    'pyramid>=1.4,<1.5',
     ]
 
 scaffolds = """
 [pyramid.scaffold]
 mongoengine = pyramid_mongo_scaffolds:PyramidMongoengineTemplate
 mongokit = pyramid_mongo_scaffolds:PyramidMongokitTemplate
+ming = pyramid_mongo_scaffolds:PyramidMingTemplate
 """
 
 classifiers = [

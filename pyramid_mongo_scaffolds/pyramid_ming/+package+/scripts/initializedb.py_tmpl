@@ -6,8 +6,9 @@ from pyramid.paster import (
     setup_logging,
     )
 from pyramid.scripts.common import parse_vars
+from mongoengine import connect
 
-from {{package}}.lib import mongo
+from {{package}}.models import MyModel
 
 
 def usage(argv):
@@ -23,9 +24,7 @@ def main(args=sys.argv):
     setup_logging(config_uri)
     settings = get_appsettings(config_uri)
     url_str = settings.get('mongo_uri', 'mongodb://localhost:27017/default')
-    mongo.configure(url_str)
+    connect('default', host=url_str)
 
-    from {{package}}.models import MyModel
-
-    model = mongo.db.MyModel({'name': 'one', 'value': 1})
+    model = MyModel(name="one", value=1)
     model.save()
