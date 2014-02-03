@@ -6,7 +6,7 @@ from {{package}}.models import MyModel
 
 @view_config(route_name='home', renderer='templates/mytemplate.pt')
 def my_view(request):
-    one = MyModel.objects(name='one').first()
+    one = MyModel.m.find().first()
     if one:
         return {'one': one, 'project': '{{project}}'}
     else:
