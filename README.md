@@ -8,7 +8,7 @@ This package provides pyramid templates with the following Mongo DB ODMs ...
  1. MongoEngine (Done)
  2. MongoKit (Done)
  3. Ming (Done)
- 4. MongoAlchemy (Pending)
+ 4. MongoAlchemy (Done)
 
 ## Dependencies ##
 

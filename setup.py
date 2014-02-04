@@ -13,6 +13,7 @@ scaffolds = """
 mongoengine = pyramid_mongo_scaffolds:PyramidMongoengineTemplate
 mongokit = pyramid_mongo_scaffolds:PyramidMongokitTemplate
 ming = pyramid_mongo_scaffolds:PyramidMingTemplate
+mongoalchemy = pyramid_mongo_scaffolds:PyramidMongoAlchemyTemplate
 """
 
 classifiers = [

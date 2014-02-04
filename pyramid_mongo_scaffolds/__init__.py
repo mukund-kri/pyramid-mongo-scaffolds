@@ -13,3 +13,7 @@ class PyramidMingTemplate(PyramidTemplate):
     _template_dir = 'pyramid_ming'
     summary = 'pyramid ming project template'
 
+class PyramidMongoAlchemyTemplate(PyramidTemplate):
+    _template_dir = 'pyramid_mongoalchemy'
+    summary = 'pyramid mongoalchemy project template'
+
